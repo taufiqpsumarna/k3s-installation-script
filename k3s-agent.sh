@@ -1,12 +1,26 @@
-sudo su -
-export K3S_KUBECONFIG_MODE="644"
-export MASTER_IP="<your-master-ip>"
-export MASTER_NODE_TOKEN="<your-master-node-token>"
+#!/bin/bash
+set -euo pipefail
 
-curl -sfL https://get.k3s.io \
-  | K3S_URL="https://${MASTER_IP}:6443" \
-    K3S_TOKEN="${MASTER_NODE_TOKEN}" \
-    sh -
+### CONFIG ###
+MASTER_IP="10.184.0.9"  # Override with env if needed
+MASTER_NODE_TOKEN="" #On control plane sudo cat /var/lib/rancher/k3s/server/node-token
+K3S_VERSION="v1.33.4+k3s1" #https://docs.k3s.io/release-notes/v1.33.X
 
-# Check for Ready node, takes ~30 seconds on control plane
-sudo k3s kubectl get node
+### Install K3s Agent ###
+echo "[INFO] Installing K3s Agent..."
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=$K3S_VERSION \
+  K3S_URL="https://${MASTER_IP}:6443" \
+  K3S_TOKEN="${MASTER_NODE_TOKEN}" \
+  sh -
+
+### Wait for Node Registration ###
+echo "[INFO] Waiting for agent node to join the cluster..."
+sleep 30
+
+### Verify Agent Node Locally ###
+if sudo k3s kubectl get node "$(hostname)" &>/dev/null; then
+  echo "[SUCCESS] Node $(hostname) has joined the cluster."
+else
+  echo "[ERROR] Node $(hostname) did not register properly."
+  exit 1
+fi
