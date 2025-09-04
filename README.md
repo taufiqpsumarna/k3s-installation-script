@@ -76,7 +76,7 @@ sudo k3s kubectl get node
 * Make sure each node has a unique hostname.
 * Replace dynamic IP (`ifconfig.me`) with a static IP or DNS if running in production.
 * For multiple control plane nodes (HA setup), you’ll need an external datastore (etcd, MySQL, PostgreSQL).
-
+* See for k3s release notes https://docs.k3s.io/release-notes/v1.33.X
 ---
 
 ## 📖 References
