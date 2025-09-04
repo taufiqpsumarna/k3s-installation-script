@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ### CONFIG ###
-MASTER_IP="10.184.0.9"  # Override with env if needed
+MASTER_IP=""  # Control node private IP Override with env if needed
 MASTER_NODE_TOKEN="" #On control plane sudo cat /var/lib/rancher/k3s/server/node-token
 K3S_VERSION="v1.33.4+k3s1" #https://docs.k3s.io/release-notes/v1.33.X
 
