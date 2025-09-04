@@ -1,7 +1,3 @@
-Got it—you want to prepare **GitHub Gist information** for your two scripts (`k3s-master-control-plane.sh` and `k3s-agent.sh`). Here’s a concise draft you can use directly in your Gist:
-
----
-
 # 🚀 K3s Cluster Setup (Master + Agent)
 
 This repository contains two scripts to help you set up a **lightweight Kubernetes (K3s)** cluster with a control plane and agent nodes.
