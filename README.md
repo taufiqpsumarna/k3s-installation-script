@@ -84,7 +84,3 @@ sudo k3s kubectl get node
 * [K3s Docs – Quick Start](https://docs.k3s.io/quick-start)
 * [K3s Docs – Installation Options](https://docs.k3s.io/installation/configuration)
 * [K3s Docs – Cluster Access](https://docs.k3s.io/cluster-access)
-
----
-
-👉 Would you like me to **merge both scripts into a single README + two separate files in the gist**, or just prepare a one-file Gist with instructions inline for both master and agent setup?
